@@ -33,15 +33,27 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   Widget headerFirst() {
     double height = 58;
+    // return CustomSliverPersistentHeader(
+    //     Container(
+    //         height: height,
+    //         color: Colors.white,
+    //         width: BaseController.to.size.width,
+    //         child: customListView()),
+    //     height,
+    //     false,
+    //     false);
     return CustomSliverPersistentHeader(
         Container(
-            height: height,
-            color: Colors.white,
-            width: BaseController.to.size.width,
-            child: customListView()),
+          color: Colors.purple,
+          width: BaseController.to.size.width,
+          child: Center(
+            child: customListView(),
+          ),
+        ),
         height,
-        false,
-        false);
+        height * 3,
+        true,
+        true);
   }
 
   Widget customListView() {
