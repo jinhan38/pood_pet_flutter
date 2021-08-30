@@ -39,6 +39,7 @@ class _ScrollTestScreenState extends State<ScrollTestScreen> {
 
   Widget headerFirst() {
     double height = 60;
+
     return CustomSliverPersistentHeader(
         Container(
           height: height,
@@ -50,6 +51,7 @@ class _ScrollTestScreenState extends State<ScrollTestScreen> {
           ),
         ),
         height,
+        height *2,
         false,
         false);
   }
@@ -64,6 +66,7 @@ class _ScrollTestScreenState extends State<ScrollTestScreen> {
           child: Text("두번째 헤더"),
         ),
         height,
+        height *2,
         true,
         true);
   }
