@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-Widget CustomSliverPersistentHeader(Widget widget, double height, bool floating, bool pinned ) {
+Widget CustomSliverPersistentHeader(Widget widget, double minHeight,double maxHeight, bool floating, bool pinned ) {
   // var header = MyCustomHeader();
   // header.setWidget(widget, height);
   return SliverPersistentHeader(
-    delegate: MyCustomHeader()..setWidget(widget, height),
+    delegate: MyCustomHeader()..setWidget(widget, minHeight, maxHeight),
     floating: floating,
     pinned: pinned,
   );
@@ -12,11 +12,13 @@ Widget CustomSliverPersistentHeader(Widget widget, double height, bool floating,
 
 class MyCustomHeader extends SliverPersistentHeaderDelegate {
   late final Widget widget;
-  double height = 0;
+  double minHeight = 0;
+  double maxHeight = 0;
 
-  setWidget(Widget widget, double height) {
+  setWidget(Widget widget, double minHeight, double maxHeight) {
     this.widget = widget;
-    this.height = height;
+    this.minHeight = minHeight;
+    this.maxHeight = maxHeight;
   }
 
   @override
@@ -26,12 +28,26 @@ class MyCustomHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => height;
+  double get maxExtent => maxHeight;
 
   @override
-  double get minExtent => height;
+  double get minExtent => minHeight;
+
+  // @override
+  // bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+  //   return oldDelegate.maxHeight != this.maxHeight ||
+  //       oldDelegate.minHeight != this.minHeight ||
+  //       oldDelegate.child != this.widget;
+  // }
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      true;
+  bool shouldRebuild( MyCustomHeader oldDelegate) {
+    return oldDelegate.maxHeight != this.maxHeight ||
+        oldDelegate.minHeight != this.minHeight ||
+        oldDelegate.widget != this.widget;
+  }
+
+  // @override
+  // bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+  //     true;
 }
