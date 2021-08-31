@@ -7,3 +7,13 @@ Widget CustomSliverList({required Widget widget, required int itemCount}) {
     }, childCount: itemCount),
   );
 }
+
+
+// Widget CustomSliverList(
+//     {required Widget Function(int index) child, required int itemCount}) {
+//   return SliverList(
+//     delegate: SliverChildBuilderDelegate((context, index) {
+//       return child(index);
+//     }, childCount: itemCount),
+//   );
+// }
