@@ -11,7 +11,6 @@ void main() {
   runApp(MyApp());
 }
 
-//permanent : true로 하면 앱이 종료되기 전까지는 상태를 계속 유지한다
 void initService() {
   Get.put(BaseController(), permanent: true);
   Get.put(HomeScreenController(), permanent: true);
@@ -21,14 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var mode = MediaQuery.of(context).platformBrightness;
-    // NavigationScreenController.to.changeTheme(mode ==Brightness.light);
-
     return GetMaterialApp(
-      title: "Pood",
-      // theme: mode == Brightness.light ? ThemeData.light() : ThemeData.dark(),
-      theme: ThemeData.light(),
-      initialRoute: RoutePage.INTRO_ROUTE,
-      getPages: RoutePage.getPageList,
-    );
+        title: "Pood",
+        theme: ThemeData(
+          brightness: Brightness.light,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        initialRoute: RoutePage.INTRO_ROUTE,
+        getPages: RoutePage.getPageList);
   }
 }
