@@ -48,4 +48,12 @@ Thumbs.db
 *.mov
 *.wmv
 
+#
+build/
+.dart_tool/
 .packages
+.pub-cache/
+.pub/
+pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies
