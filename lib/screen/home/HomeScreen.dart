@@ -13,7 +13,7 @@ class HomeScreen extends GetView<HomeScreenController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("푸드111"),
+        title: Text("푸드111222"),
       ),
       body: Center(
         child: Column(
